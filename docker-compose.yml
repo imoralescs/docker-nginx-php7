@@ -3,6 +3,7 @@ version: "2"
 services:
   nginx:
     build: ./nginx/
+    container_name: "${NGINX_NAME}"
     ports:
       - 80:80
     depends_on:
@@ -14,6 +15,7 @@ services:
 
   php:
     build: ./php/
+    container_name: "${PHP_NAME}"
     expose:
       - 9000
     depends_on:
@@ -26,6 +28,7 @@ services:
 
   mysql:
     image: mysql:latest
+    container_name: "${MYSQL_NAME}"
     volumes:
       - data:/var/lib/mysql
     environment:
@@ -38,6 +41,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    container_name: "${PHPMYADMIN_NAME}"
     ports:
       - 8080:80
     depends_on:
